@@ -1,7 +1,14 @@
-# Modelo entidad-relación
+# Modelo entidad-relación · Día 2
 
 ```mermaid
 erDiagram
+    USUARIOS {
+        int id PK
+        string nombre
+        string correo UK
+        string password_hash
+        datetime fecha_creacion
+    }
     INSUMOS {
         int id PK
         string nombre
@@ -42,4 +49,5 @@ erDiagram
 
 - Un lote puede dividirse en muchos barriles (1:N).
 - Un lote puede utilizar muchos insumos y un insumo puede participar en muchos lotes (N:M), resuelto con `lote_insumos`.
-- `lote_insumos` deja preparada la trazabilidad de cantidades utilizadas para una siguiente iteración del CRUD.
+- `USUARIOS` gestiona el acceso mediante registro, login y JWT. No se relaciona con roles porque están fuera del alcance.
+- La API valida que el `lote_id` de un barril exista antes de crear o actualizar el registro.

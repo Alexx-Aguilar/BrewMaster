@@ -1,11 +1,38 @@
 {
-  "info": { "name": "BrewMaster API", "description": "Pruebas CRUD del sistema empresarial BrewMaster", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
-  "variable": [{ "key": "baseUrl", "value": "http://localhost:4000/api" }],
+  "info": {
+    "name": "BrewMaster API · Día 2",
+    "description": "Autenticación JWT, CRUDs completos, validaciones y relaciones de BrewMaster.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000/api" },
+    { "key": "token", "value": "" },
+    { "key": "insumoId", "value": "1" },
+    { "key": "loteId", "value": "1" },
+    { "key": "barrilId", "value": "1" }
+  ],
   "item": [
-    { "name": "Health", "request": { "method": "GET", "url": "{{baseUrl}}/health" } },
-    { "name": "Listar insumos", "request": { "method": "GET", "url": "{{baseUrl}}/insumos" } },
-    { "name": "Crear insumo", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Malta Munich\",\n  \"tipo\": \"Malta\",\n  \"proveedor\": \"Maltería Central\",\n  \"stock_kg\": 35,\n  \"unidad\": \"kg\"\n}" }, "url": "{{baseUrl}}/insumos" } },
-    { "name": "Listar lotes", "request": { "method": "GET", "url": "{{baseUrl}}/lotes" } },
-    { "name": "Listar barriles", "request": { "method": "GET", "url": "{{baseUrl}}/barriles" } }
+    { "name": "Health público", "request": { "method": "GET", "url": "{{baseUrl}}/health" } },
+    { "name": "Auth · Registrar", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Alex Aguilar\",\n  \"correo\": \"alex@brewmaster.test\",\n  \"password\": \"Password123\"\n}" }, "url": "{{baseUrl}}/auth/register" } },
+    { "name": "Auth · Login y guardar token", "event": [{ "listen": "test", "script": { "exec": ["const json = pm.response.json();", "if (json.token) pm.collectionVariables.set('token', json.token);"] } }], "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"correo\": \"alex@brewmaster.test\",\n  \"password\": \"Password123\"\n}" }, "url": "{{baseUrl}}/auth/login" } },
+    { "name": "Auth · Perfil actual", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/auth/me" } },
+    { "name": "Auth · Caso 401 sin token", "request": { "method": "GET", "url": "{{baseUrl}}/insumos" } },
+    { "name": "Insumos · Listar", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/insumos" } },
+    { "name": "Insumos · Crear", "event": [{ "listen": "test", "script": { "exec": ["const json = pm.response.json();", "if (json.id) pm.collectionVariables.set('insumoId', json.id);"] } }], "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Malta Munich\",\n  \"tipo\": \"Malta\",\n  \"proveedor\": \"Maltería Central\",\n  \"stock_kg\": 35\n}" }, "url": "{{baseUrl}}/insumos" } },
+    { "name": "Insumos · Ver uno", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/insumos/{{insumoId}}" } },
+    { "name": "Insumos · Actualizar", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Malta Munich actualizada\",\n  \"tipo\": \"Malta\",\n  \"proveedor\": \"Maltería Central\",\n  \"stock_kg\": 40\n}" }, "url": "{{baseUrl}}/insumos/{{insumoId}}" } },
+    { "name": "Insumos · Eliminar", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/insumos/{{insumoId}}" } },
+    { "name": "Lotes · Listar", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/lotes" } },
+    { "name": "Lotes · Crear", "event": [{ "listen": "test", "script": { "exec": ["const json = pm.response.json();", "if (json.id) pm.collectionVariables.set('loteId', json.id);"] } }], "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"codigo\": \"BM-QA-001\",\n  \"estilo\": \"Pale Ale\",\n  \"litros_totales\": 500,\n  \"fecha_cocinado\": \"2026-11-06\",\n  \"estado\": \"Cocinado\"\n}" }, "url": "{{baseUrl}}/lotes" } },
+    { "name": "Lotes · Ver uno", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/lotes/{{loteId}}" } },
+    { "name": "Lotes · Actualizar", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"estado\": \"Fermentando\"\n}" }, "url": "{{baseUrl}}/lotes/{{loteId}}" } },
+    { "name": "Lotes · Eliminar", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/lotes/{{loteId}}" } },
+    { "name": "Barriles · Listar", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/barriles" } },
+    { "name": "Barriles · Crear", "event": [{ "listen": "test", "script": { "exec": ["const json = pm.response.json();", "if (json.id) pm.collectionVariables.set('barrilId', json.id);"] } }], "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"codigo\": \"BR-QA-001\",\n  \"lote_id\": {{loteId}},\n  \"capacidad_litros\": 30,\n  \"nivel_co2\": 65,\n  \"estado\": \"Lleno\",\n  \"ubicacion\": \"Tanque QA\"\n}" }, "url": "{{baseUrl}}/barriles" } },
+    { "name": "Barriles · Ver uno", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/barriles/{{barrilId}}" } },
+    { "name": "Barriles · Actualizar", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nivel_co2\": 72,\n  \"estado\": \"Madurando\"\n}" }, "url": "{{baseUrl}}/barriles/{{barrilId}}" } },
+    { "name": "Barriles · Eliminar", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/barriles/{{barrilId}}" } },
+    { "name": "Validación · Caso 400", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"\",\n  \"stock_kg\": -5\n}" }, "url": "{{baseUrl}}/insumos" } },
+    { "name": "Relación · Caso 404", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"codigo\": \"BR-REL-404\",\n  \"lote_id\": 999999,\n  \"capacidad_litros\": 30,\n  \"nivel_co2\": 50,\n  \"estado\": \"Lleno\",\n  \"ubicacion\": \"QA\"\n}" }, "url": "{{baseUrl}}/barriles" } }
   ]
 }
