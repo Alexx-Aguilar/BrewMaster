@@ -56,6 +56,7 @@ Protegidos con JWT:
 - [Documento del proyecto](./docs/01-documento-proyecto.md)
 - [Modelo entidad-relación actualizado](./docs/02-modelo-datos.md)
 - [Investigación sobre JWT](./docs/06-investigacion-token-jwt.md)
+- [Evidencias visuales Día 2](./docs/evidencia-dia-2.html)
 - [Guía de entrega del Día 2](./docs/07-guia-entrega-dia-2.md)
 - [Colección Postman](./postman/BrewMaster.postman_collection.json)
 - [ZIP de entrega Día 2](./ENTREGA_DIA_2_ALEX_AGUILAR_LOPEZ.zip)
