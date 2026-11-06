@@ -30,7 +30,7 @@ Relaciones principales:
 
 Consulta el diagrama completo en [02-modelo-datos.md](./02-modelo-datos.md).
 
-![Modelo entidad-relación](./capturas/03-modelo-entidad-relacion.png)
+![Modelo entidad-relación](./capturas/03-modelo-entidad-relacion.svg)
 
 ## 4. Evidencia del frontend React
 
