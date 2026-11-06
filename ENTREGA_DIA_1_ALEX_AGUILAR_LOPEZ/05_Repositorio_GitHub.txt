@@ -1,5 +1,0 @@
-Repositorio GitHub de BrewMaster:
-
-https://github.com/Alexx-Aguilar/BrewMaster
-
-Rama principal: main

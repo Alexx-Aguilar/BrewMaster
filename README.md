@@ -7,6 +7,10 @@ Sistema empresarial para una microcervecería artesanal. Permite registrar insum
 - [Documento del proyecto](./docs/01-documento-proyecto.md)
 - [Modelo entidad-relación](./docs/02-modelo-datos.md)
 - [Pruebas de API para Postman](./docs/03-pruebas-api.md)
+- [Evidencias ordenadas](./docs/evidencia-dia-1.html)
+- [ZIP final para Classroom](./ENTREGA_DIA_1_ALEX_AGUILAR_LOPEZ.zip)
+
+La entrega final está centralizada en un solo ZIP. La carpeta `docs/capturas` contiene las imágenes de evidencia y el diagrama visual.
 
 ## Ejecutar
 
