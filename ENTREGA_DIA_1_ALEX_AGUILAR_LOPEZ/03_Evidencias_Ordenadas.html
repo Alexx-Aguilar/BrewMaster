@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evidencias Día 1 - BrewMaster</title>
+  <style>
+    @page{size:A4;margin:18mm}*{box-sizing:border-box}body{margin:0;background:#f3f1ec;color:#29322d;font-family:Arial,sans-serif;line-height:1.5}.sheet{max-width:980px;margin:32px auto;background:#fff;padding:58px;box-shadow:0 12px 40px #24332d1c}.cover{min-height:720px;display:flex;flex-direction:column;justify-content:center;border-bottom:5px solid #bd762c}.eyebrow{color:#a96624;text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:bold}.logo{font-size:58px;margin:20px 0 10px}.cover h1{font-family:Georgia,serif;font-size:42px;line-height:1.1;margin:0;color:#1e3028}.cover h2{font-weight:normal;color:#8a8278;margin:18px 0 48px}.student{border-left:4px solid #bd762c;padding-left:18px;font-size:16px}.section{page-break-before:always;padding-top:8px}.section h2{font-family:Georgia,serif;font-size:29px;color:#24332d;border-bottom:1px solid #e7dfd2;padding-bottom:10px}.section h3{color:#a96624;margin-top:30px}.figure{margin:22px 0 34px;page-break-inside:avoid}.figure img{display:block;max-width:100%;max-height:550px;margin:auto;border:1px solid #e5ded2;border-radius:10px;box-shadow:0 5px 18px #24332d15}.figure.wide img{width:100%;max-height:none}.caption{font-size:13px;color:#777066;text-align:center;margin-top:9px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{border:1px solid #e8e1d6;border-radius:10px;padding:15px;background:#fbfaf7}.card strong{display:block;color:#a96624}.check{color:#4f795a;font-weight:bold}.footer{margin-top:50px;border-top:1px solid #e7dfd2;padding-top:10px;color:#8a8278;font-size:12px}@media print{body{background:#fff}.sheet{margin:0;box-shadow:none;max-width:none;padding:0}.cover{min-height:245mm}}@media(max-width:700px){.sheet{margin:0;padding:25px}.cover{min-height:620px}.cover h1{font-size:32px}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="cover">
+      <div class="eyebrow">Mini Proyecto 1 · Día 1</div><div class="logo">🍻</div>
+      <h1>BrewMaster</h1><h2>Evidencias de modelado de datos e inicio del CRUD</h2>
+      <div class="student"><strong>Estudiante:</strong> Alex Aguilar López<br><strong>Curso:</strong> Desarrollo Web Full Stack<br><strong>Docente:</strong> Barry<br><strong>Fecha:</strong> 05-11-2026</div>
+    </section>
+    <section class="section"><h2>1. Evidencia del frontend</h2><p>La interfaz React permite consultar y administrar las entidades principales del sistema empresarial BrewMaster.</p>
+      <div class="figure wide"><img src="./capturas/01-tabla-insumos.png" alt="Tabla de insumos"><div class="caption">Figura 1. Dashboard y tabla de Insumos.</div></div>
+      <div class="figure wide"><img src="./capturas/02-formulario-insumo.png" alt="Formulario de insumo"><div class="caption">Figura 2. Formulario para crear un nuevo insumo.</div></div>
+      <div class="figure wide"><img src="./capturas/04-tabla-lotes.png" alt="Tabla de lotes"><div class="caption">Figura 3. Gestión de lotes y estados de producción.</div></div>
+      <div class="figure wide"><img src="./capturas/05-tabla-barriles.png" alt="Tabla de barriles"><div class="caption">Figura 4. Gestión de barriles, CO₂, ubicación y estado.</div></div>
+    </section>
+    <section class="section"><h2>2. Evidencia de la API REST</h2><p>La API Node.js responde en JSON y fue probada con Postman.</p>
+      <div class="figure wide"><img src="./capturas/06-postman-health.png" alt="Health check"><div class="caption">Figura 5. Health check de la API con respuesta 200 OK.</div></div>
+      <div class="figure wide"><img src="./capturas/07-postman-listar-insumos.png" alt="Listar insumos"><div class="caption">Figura 6. GET /api/insumos con respuesta 200 OK.</div></div>
+      <div class="figure wide"><img src="./capturas/08-postman-crear-insumo.png" alt="Crear insumo"><div class="caption">Figura 7. POST /api/insumos con respuesta 201 Created.</div></div>
+      <div class="figure wide"><img src="./capturas/09-postman-listar-lotes.png" alt="Listar lotes"><div class="caption">Figura 8. GET /api/lotes con respuesta 200 OK.</div></div>
+      <div class="figure wide"><img src="./capturas/10-postman-listar-barriles.png" alt="Listar barriles"><div class="caption">Figura 9. GET /api/barriles con respuesta 200 OK.</div></div>
+      <div class="figure wide"><img src="./capturas/11-postman-validacion.png" alt="Validacion"><div class="caption">Figura 10. Validación del backend con respuesta 400 Bad Request.</div></div>
+    </section>
+    <section class="section"><h2>3. Modelo entidad-relación</h2><p>El modelo contempla Insumos, Lotes, Barriles y la tabla intermedia Lote_Insumos.</p><div class="figure"><img src="./capturas/03-modelo-entidad-relacion.svg" alt="Diagrama entidad relacion"><div class="caption">Figura 11. Modelo entidad-relación de BrewMaster.</div></div></section>
+    <section class="section"><h2>4. Resultado de la entrega</h2><div class="cards"><div class="card"><strong>Backend</strong>Node.js, Express, API REST y SQLite.</div><div class="card"><strong>Frontend</strong>React, Vite, formularios y tablas.</div><div class="card"><strong>CRUD</strong>Crear, consultar, actualizar y eliminar.</div><div class="card"><strong>Validaciones</strong>Campos obligatorios, tipos y rangos.</div></div><p class="check" style="margin-top:28px">✓ Pruebas de API ejecutadas correctamente · ✓ Build de React generado correctamente</p><div class="footer">BrewMaster · Alex Aguilar López · Desarrollo Web Full Stack</div></section>
+  </main>
+</body></html>
