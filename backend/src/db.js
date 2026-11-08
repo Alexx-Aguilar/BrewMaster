@@ -1,3 +1,6 @@
+if (process.env.DB_CLIENT === 'mysql') {
+  module.exports = require('./mysql-db');
+} else {
 const fs = require('node:fs');
 const path = require('node:path');
 const initSqlJs = require('sql.js');
@@ -28,3 +31,4 @@ async function createDatabase() {
   return { query, execute, save };
 }
 module.exports = createDatabase();
+}

@@ -23,6 +23,10 @@ npm run dev
 
 Antes de ejecutar en un entorno real, edita `backend/.env` y cambia `JWT_SECRET` por una clave larga y privada. El archivo `.env` no se sube al repositorio.
 
+### MySQL Workbench
+
+El proyecto también puede ejecutarse con MySQL. En MySQL Workbench abre y ejecuta [brewmaster-mysql.sql](./backend/database/brewmaster-mysql.sql). Después copia `backend/.env.example` como `backend/.env` y completa `DB_USER`, `DB_PASSWORD` y `DB_CLIENT=mysql`. La aplicación crea/verifica las tablas automáticamente al iniciar.
+
 La API queda en `http://localhost:4000` y React en `http://localhost:5173`.
 
 ## Scripts
